@@ -404,6 +404,14 @@
             font-size: 0.75rem;
             border: 1px solid var(--neon-blue);
         }
+        .lecture-hours-r {
+            background: rgba(53, 223, 11, 0.812);
+            color: var(--neon-purple);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            border: 1px solid var(--neon-purple);
+        }
         .download-btn {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.2);
@@ -683,7 +691,7 @@
             gap: 20px;
             padding: 0 20px;
         }
-        .video-card-mini {
+        .video-card-mini-l {
             min-width: 280px;
             background: rgba(0,0,0,0.4);
             border-radius: 8px;
@@ -692,27 +700,41 @@
             transition: all 0.3s;
             cursor: pointer;
         }
-        .video-card-mini:hover {
+        .video-card-mini-l:hover {
             transform: translateY(-8px);
             border-color: var(--neon-blue);
             box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
         }
+        .video-card-mini-r {
+            min-width: 280px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .video-card-mini-r:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-purple);
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.3);
+        }
         .video-thumb-mini {
-    width: 100%;
-    /* height: 160px;  <-- 【删除】这行，不要固定高度 */
-    
-    /* --- 【新增】以下两行 --- */
-    aspect-ratio: 16 / 9;  /* 强制锁定为视频标准比例 */
-    height: auto;          /* 高度自动适应 */
+            width: 100%;
+            /* height: 160px;  <-- 【删除】这行，不要固定高度 */
+            
+            /* --- 【新增】以下两行 --- */
+            aspect-ratio: 16 / 9;  /* 强制锁定为视频标准比例 */
+            height: auto;          /* 高度自动适应 */
 
-    /* 原有代码保持不变 */
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+            /* 原有代码保持不变 */
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
         .video-thumb-mini img {
             width: 100%;
             height: 100%;
@@ -727,8 +749,41 @@
             background: rgba(0,0,0,0.3);
             transition: all 0.3s;
         }
-        .video-card-mini:hover .video-thumb-mini::after {
+        .video-card-mini-l:hover .video-thumb-mini::after {
             background: rgba(0, 243, 255, 0.2);
+        }
+        .video-card-mini-r:hover .video-thumb-mini::after {
+            background: rgba(21, 156, 77, 0.2);
+        }
+        .video-thumb-mini-r {
+            width: 100%;
+            /* height: 160px;  <-- 【删除】这行，不要固定高度 */
+            
+            /* --- 【新增】以下两行 --- */
+            aspect-ratio: 16 / 9;  /* 强制锁定为视频标准比例 */
+            height: auto;          /* 高度自动适应 */
+
+            /* 原有代码保持不变 */
+            background: linear-gradient(135deg, #01c375, #053703);
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .video-thumb-mini-r img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+        .video-thumb-mini-r::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            transition: all 0.3s;
         }
         .play-icon {
             position: absolute;
@@ -740,8 +795,12 @@
             z-index: 1;
             transition: all 0.3s;
         }
-        .video-card-mini:hover .play-icon {
+        .video-card-mini-l:hover .play-icon {
             color: var(--neon-blue);
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+        .video-card-mini-r:hover .play-icon {
+            color: var(--neon-purple);
             transform: translate(-50%, -50%) scale(1.2);
         }
         .video-info-mini {
@@ -784,6 +843,28 @@
         .view-all-btn a:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(0, 243, 255, 0.5);
+        }
+        .view-all-btn-r {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .view-all-btn-r a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--neon-blue), rgba(20, 186, 8, 0.7));
+            color: #000;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(5, 228, 9, 0.3);
+        }
+        .view-all-btn-r a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 245, 10, 0.5);
         }
 
         /* ============ 右侧折叠章节 ============ */
@@ -1087,7 +1168,39 @@
             color: var(--neon-gold);
             font-family: 'Orbitron', sans-serif;
         }
+        .pane.right .video-card-mini:hover {
+            /* 边框变绿 */
+            border-color: #00ff9d !important; 
+            
+            /* 绿色光晕：最后这个 rgba(0, 255, 157, 0.5) 就是绿色 */
+            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.5) !important;
+        }
 
+        /* 2. 强制修改右侧播放按钮的颜色 */
+        .pane.right .video-card-mini:hover .play-icon {
+            color: #00ff9d !important;
+            text-shadow: 0 0 20px #00ff9d !important;
+        }
+
+        /* 3. 强制修改右侧视频缩略图的遮罩层颜色 */
+        .pane.right .video-card-mini:hover .video-thumb-mini::after {
+            background: rgba(0, 255, 157, 0.2) !important;
+        }
+        .pane.right .carousel-wrapper::-webkit-scrollbar-thumb,
+        .pane.right .scroll-screen::-webkit-scrollbar-thumb {
+            /* 核心修改：这里定义了绿色的渐变 */
+            background: linear-gradient(90deg, #00ff9d, rgba(0, 255, 157, 0.5)) !important;
+            
+            /* 增加绿色发光效果 */
+            box-shadow: 0 0 8px rgba(0, 255, 157, 0.6);
+            border-radius: 4px;
+        }
+
+        /* 2. 滚动条的轨道背景 (可选，设为淡淡的绿色) */
+        .pane.right .carousel-wrapper::-webkit-scrollbar-track,
+        .pane.right .scroll-screen::-webkit-scrollbar-track {
+            background: rgba(0, 255, 157, 0.05) !important;
+        }
         /* ============ 动画 ============ */
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
@@ -1230,8 +1343,8 @@
                                         <div class="lecture-meta">
                                             <span class="lecture-hours">2+2学时</span>
                                             <a href="./pdf/g/6.pdf" class="download-btn" target="_blank" style="text-decoration: none;">
-    <i class="fas fa-download"></i> 课件
-</a>
+                                                <i class="fas fa-download"></i> 课件
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -1437,7 +1550,7 @@
                         <div class="carousel-wrapper">
                             <div class="carousel-track" id="video-track">
                                 <!-- 示例视频卡片（实际应该有50个） -->
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV17SzeBsEix/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV17SzeBsEix/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/1.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1448,7 +1561,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1jSzeBsEmo/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1jSzeBsEmo/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/2.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1459,7 +1572,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1jSzeBsEXX/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1jSzeBsEXX/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/3.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1470,7 +1583,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV17SzeBsEuo/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV17SzeBsEuo/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/4.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1481,7 +1594,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1EmzeBdEJu/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1EmzeBdEJu/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/5.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1492,7 +1605,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1EmzeBdE4d/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1EmzeBdE4d/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/6.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1503,7 +1616,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1EmzeBdEEp/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1EmzeBdEEp/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/7.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1514,7 +1627,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1RGzeBSEaE/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1RGzeBSEaE/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/8.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1525,7 +1638,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1BmzeBdEVe/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1BmzeBdEVe/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/9.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1536,7 +1649,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV15LzeBUEaW/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV15LzeBUEaW/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/10.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1547,7 +1660,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1eLzeBmEtu/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1eLzeBmEtu/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/11.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1558,7 +1671,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1eLzeBmEhr/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1eLzeBmEhr/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/12.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1569,7 +1682,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1eLzeBmEFF/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1eLzeBmEFF/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/13.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1580,7 +1693,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1vGzeBSEXX/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1vGzeBSEXX/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/14.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1591,7 +1704,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1e5zeBEEhC/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1e5zeBEEhC/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/15.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1602,7 +1715,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1e5zeBEExh/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1e5zeBEExh/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/16.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1613,7 +1726,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1e5zeBEECw/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1e5zeBEECw/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/17.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1624,7 +1737,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1RGzeBSEid/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1RGzeBSEid/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/18.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1635,7 +1748,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1aEzeB1EHj/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1aEzeB1EHj/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/19.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1646,7 +1759,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1BMzeBpEFa/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1BMzeBpEFa/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/20.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1657,7 +1770,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV17MzeBWEMD/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV17MzeBWEMD/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/21.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1668,7 +1781,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV148zeBMERt/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV148zeBMERt/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/22.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1679,7 +1792,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV148zeBME9J/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV148zeBME9J/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/23.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1690,7 +1803,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1hHzeBCEvY/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1hHzeBCEvY/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/24.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1701,7 +1814,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1DHzeBCEo9/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1DHzeBCEo9/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/25.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1712,7 +1825,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1QnzeB5EwJ/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1QnzeB5EwJ/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/26.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1723,7 +1836,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1bszeBrEYP/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1bszeBrEYP/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/27.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1734,7 +1847,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1bszeBrE6U/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1bszeBrE6U/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/28.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1745,7 +1858,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1bszeBrExx/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1bszeBrExx/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/29.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1756,7 +1869,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV18szeBkEbD/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV18szeBkEbD/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/30.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1767,7 +1880,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1SWzeBGEYn/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1SWzeBGEYn/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/31.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1778,7 +1891,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1VczqBREUH/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1VczqBREUH/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/32.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1789,7 +1902,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1DTzqBDEar/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1DTzqBDEar/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/33.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1800,7 +1913,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1hTzqBDE8J/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1hTzqBDE8J/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/34.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1811,7 +1924,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV13TzqBDEFt/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV13TzqBDEFt/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/35.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1822,7 +1935,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV13KzqBHErm/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV13KzqBHErm/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/36.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1833,7 +1946,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1hKzqBHEp4/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1hKzqBHEp4/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/37.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1844,7 +1957,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV13KzqBHEmh/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV13KzqBHEmh/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/38.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1855,7 +1968,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1ugzqBUEuf/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1ugzqBUEuf/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/39.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1866,7 +1979,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1ugzqBUE61/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1ugzqBUE61/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/40.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1877,7 +1990,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1ugzqBUEBr/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1ugzqBUEBr/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/41.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1888,7 +2001,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1MgzqBUEk1/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1MgzqBUEk1/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/42.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1899,7 +2012,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1guzqBJEWB/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1guzqBJEWB/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/43.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1910,7 +2023,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1uuzqBJEq4/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1uuzqBJEq4/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/44.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1921,7 +2034,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1uuzqBJEtu/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1uuzqBJEtu/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/45.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1932,7 +2045,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1uuzqBJEzh/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1uuzqBJEzh/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/46.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1943,7 +2056,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1VczqBREEv/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1VczqBREEv/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/47.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1954,7 +2067,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1eczqBREpc/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1eczqBREpc/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/48.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1965,7 +2078,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1VFzqBxEoY/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV1VFzqBxEoY/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/49.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -1976,7 +2089,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV15FzqBxEq3/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                <div class="video-card-mini-l" onclick="window.open('https://www.bilibili.com/video/BV15FzqBxEq3/?spm_id_from=333.1387.collection.video_card.click', '_blank')">
                                     <div class="video-thumb-mini" style="background-image: url('./image/50.jpg');">
                                         <i class="fas fa-play-circle play-icon"></i>
                                     </div>
@@ -2440,8 +2553,8 @@
                             <div class="carousel-wrapper">
                                 <div class="carousel-track" id="video-track">
                                     <!-- 示例视频卡片（实际应该有50个） -->
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1HN4y1g7g4?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/1.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1HN4y1g7g4?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/1.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2451,8 +2564,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1cZ4y1Y7eu?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/2.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1cZ4y1Y7eu?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/2.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2462,8 +2575,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1FY4y177Lg?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/3.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1FY4y177Lg?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/3.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2473,8 +2586,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1nU4y1B7J3?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/4.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1nU4y1B7J3?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/4.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2484,8 +2597,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1YV4y1J7dz?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/5.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1YV4y1J7dz?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/5.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2495,8 +2608,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1vF411P7PY?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/s1.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1vF411P7PY?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/s1.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2506,8 +2619,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1Dt4y1G7ib?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/s2.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1Dt4y1G7ib?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/s2.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2517,8 +2630,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1ja411S7jy?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/6.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1ja411S7jy?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/6.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2528,8 +2641,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV16t4y1V71n?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/7.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV16t4y1V71n?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/7.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2539,8 +2652,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV14S4y147U6?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/8.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV14S4y147U6?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/8.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2550,8 +2663,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1sa411o7AV?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/8.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1sa411o7AV?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/8.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2561,8 +2674,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1DW4y1a7Jb?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/9.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1DW4y1a7Jb?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/9.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2572,8 +2685,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1Ag411C7mG?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/10.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1Ag411C7mG?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/10.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2583,8 +2696,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1T14y1t7x4?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/s4.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1T14y1t7x4?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/s4.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2595,8 +2708,8 @@
                                         </div>
                                     </div>
                     
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1jB4y157jd?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/11.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1jB4y157jd?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/11.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2606,8 +2719,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="video-card-mini" onclick="window.open('https://www.bilibili.com/video/BV1JU4y1k7js?spm_id_from=333.1387.collection.video_card.click', '_blank')">
-                                        <div class="video-thumb-mini" style="background-image: url('./image/pd/12.jpg');">
+                                    <div class="video-card-mini-r" onclick="window.open('https://www.bilibili.com/video/BV1JU4y1k7js?spm_id_from=333.1387.collection.video_card.click', '_blank')">
+                                        <div class="video-thumb-mini-r" style="background-image: url('./image/pd/12.jpg');">
                                             <i class="fas fa-play-circle play-icon"></i>
                                         </div>
                                         <div class="video-info-mini">
@@ -2619,7 +2732,7 @@
                                     </div>
                                 </div>
                             </div>
-                    <div class="view-all-btn">
+                    <div class="view-all-btn-r">
                         <a href="https://space.bilibili.com/1562372262/lists/2571210?type=series" target="_blank">
                             <i class="fab fa-bilibili"></i>
                             查看完整合集（16个视频）
