@@ -270,6 +270,13 @@
             max-width: 600px; 
             line-height: 1.6;
         }
+        .intro-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-end;
+            align-items: center;
+        }
         .intro-tags span {
             display: inline-block; 
             padding: 6px 14px; 
@@ -277,8 +284,9 @@
             border-radius: 20px; 
             font-size: 0.8rem; 
             color: #ccc; 
-            margin-left: 8px;
+            margin: 0;
             transition: all 0.3s;
+            white-space: nowrap;
         }
         .pane.left .intro-tags span:hover {
             border-color: var(--neon-blue);
@@ -873,15 +881,16 @@
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             column-gap: 20px;
-            /* 保留其他原有样式 */
+            align-items: start;
         }
         .chapter-item {
-            margin-bottom: 15px;
+            margin-bottom: 0;
             background: rgba(0,0,0,0.3);
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s;
+            height: auto;
         }
         .chapter-item.active {
             border-color: var(--neon-purple);
@@ -2128,7 +2137,7 @@
     
                     <div class="name-row">
                         <div class="name-label">
-                            <i class="fas fa-user-tie" style="margin-right:8px;"></i> 课程主讲人
+                            <i class="fas fa-user-tie" style="margin-right:8px;"></i> 课程负责人
                         </div>
                         
                         <div class="name-content">丛润民</div>
@@ -2151,10 +2160,10 @@
                             <i class="fas fa-user-tie" style="margin-right:8px;"></i> 研究方向
                         </div>
                         
-                        <div class="research-tags">
-                            <span class="r-tag">人工智能</span>
-                            <span class="r-tag">具身感知</span>
-                            <span class="r-tag">........</span>
+                        <div class="title-row">
+                            <p>
+                                人工智能、具身感知 ......
+                            </p>
                         </div>
                     </div>
                 
