@@ -149,6 +149,10 @@
             width: var(--side-width); 
             background: var(--left-base); 
             border-right: 1px solid var(--neon-blue); 
+            direction: rtl;
+        }
+        .pane.left > * {
+            direction: ltr;
         }
         .pane.right { 
             width: var(--side-width); 
@@ -969,7 +973,7 @@
         /* ============ 中间教师信息卡 ============ */
         .instructor-hub {
             width: 90%;
-            max-width: 400px;
+            max-width: 500px;
             padding: 35px 35px 10px 35px;
             background: rgba(10, 10, 10, 0.95);
             border-radius: 20px;
@@ -2153,19 +2157,13 @@
                             <i class="fas fa-university"></i>
                             山东大学控制科学与工程学院
                         </p>
+                    
+                        <p style="white-space: nowrap;">
+                            <i class="fas fa-user-tie"></i>
+                            研究方向：人工智能、具身感知、视觉计算等
+                        </p>
                     </div>
                     
-                    <div class="research-row">
-                        <div class="name-label">
-                            <i class="fas fa-user-tie" style="margin-right:8px;"></i> 研究方向
-                        </div>
-                        
-                        <div class="title-row">
-                            <p>
-                                人工智能、具身感知 ......
-                            </p>
-                        </div>
-                    </div>
                 
                 </div>
             
